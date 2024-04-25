@@ -24,3 +24,21 @@ def get_gemini_response(question):
     model = genai.GenerativeModel('gemini-pro')
     response = model.generate_content(question)
     return response.text
+##initialize our streamlit app
+
+st.set_page_config(page_title="Q&A Demo")
+
+st.header("Question Application")
+
+input=st.text_input("Input: ",key="input")
+
+
+submit=st.button("Generate")
+
+## If ask button is clicked
+
+if submit:
+    
+    response=get_gemini_response(input)
+    st.subheader("So Your Answer Is")
+    st.write(response)    
